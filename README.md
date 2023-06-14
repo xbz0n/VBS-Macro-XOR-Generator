@@ -1,6 +1,28 @@
 # VBS-Macro-XOR-Generator
 
-The `VBS-Macro-XOR-Generator` is a Python script designed to automate the process of shellcode generation, modification, and execution, specifically tailored for the Offensive Security Experienced Penetration Tester (OSEP) certification challenges and the final exam. This script greatly enhances the efficiency and speed of macro payload generation and delivery, thereby facilitating the process of exploiting a network during the exam.
+The `VBS-Macro-XOR-Generator` is a Python script designed to automate the process of XOR+Ceasar macros encrypted shellcode. It uses C# based shellcode encoder that performs two types of encoding on the input shellcode. This tool can be used to modify shellcode in preparation for use in penetration testing scenarios, such as those encountered in the Offensive Security Experienced Penetration Tester (OSEP) exam and its associated challenges.
+
+## Short Description
+
+This C# program takes an input shellcode (which is expected to be replaced in the `buf` variable within the code), performs two encoding steps, and then writes the encoded shellcode to a file named "encoded_shellcode.txt". The two encoding steps are:
+
+1. **Additive encoding**: Each byte of the input shellcode is incremented by 2.
+2. **XOR encoding**: Each byte of the shellcode (after the first encoding step) is XOR'd with 0xFA.
+
+The tool also formats the encoded shellcode in a readable format (with a new line inserted every 50 bytes) before writing it to the file.
+
+After the encoded shellcode is written to the file, the program also reads the content of the "encoded_shellcode.txt" file and prints it to the console.
+
+
+## Usage
+
+Before running this program, replace the `!!!SHELLCODE!!!` placeholder in the `buf` variable within the code with your actual shellcode. The shellcode should be in a byte array format.
+
+After setting up the shellcode, you can compile and run the program. The encoded shellcode will be written to the "encoded_shellcode.txt" file in the same directory as the program.
+
+## Note
+
+This tool is intended for educational and legitimate penetration testing purposes. It should not be used for illegal activities. Use responsibly and ensure you have proper authorization before using this tool in any network or system.
 
 ## What the Script Does
 
