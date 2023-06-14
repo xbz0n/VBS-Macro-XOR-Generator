@@ -1,0 +1,1 @@
+# VBS-Macro-XOR-Generator
