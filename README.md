@@ -14,11 +14,6 @@ The tool also formats the encoded shellcode in a readable format (with a new lin
 After the encoded shellcode is written to the file, the program also reads the content of the "encoded_shellcode.txt" file and prints it to the console.
 
 
-## Usage
-
-Before running this program, replace the `!!!SHELLCODE!!!` placeholder in the `buf` variable within the code with your actual shellcode. The shellcode should be in a byte array format.
-
-After setting up the shellcode, you can compile and run the program. The encoded shellcode will be written to the "encoded_shellcode.txt" file in the same directory as the program.
 
 ## Note
 
