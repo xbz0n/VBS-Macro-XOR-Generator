@@ -1,6 +1,6 @@
-# VBS-Macro-XOR-Generator
+# VBS-Macro-XOR-Generator "VBS_X0rG3n"
 
-The `VBS-Macro-XOR-Generator` is a Python script designed to automate the process of XOR+Ceasar macros encrypted shellcode. It uses C# based shellcode encoder that performs two types of encoding on the input shellcode. This tool can be used to modify shellcode in preparation for use in penetration testing scenarios, such as those encountered in the Offensive Security Experienced Penetration Tester (OSEP) exam and its associated challenges.
+The `VBS_X0rG3n` is a Python script designed to automate the process of XOR+Ceasar macros encrypted shellcode. It uses C# based shellcode encoder that performs two types of encoding on the input shellcode. This tool can be used to modify shellcode in preparation for use in penetration testing scenarios, such as those encountered in the Offensive Security Experienced Penetration Tester (OSEP) exam and its associated challenges.
 
 ## Short Description
 
@@ -57,13 +57,13 @@ git clone https://github.com/username/VBS-Macro-XOR-Generator.git
 2. Navigate into the repository directory.
 
 ```sh
-cd OSEP-Shellcode-Generator
+cd VBS-Macro-XOR-Generator
 ```
 
 3. Run the script with the necessary arguments.
 
 ```sh
-python3 vbs_macro_xor.py -lhost 10.10.10.10 -lport 4444
+python3 VBS_X0rG3n.py -lhost 10.10.10.10 -lport 4444
 ```
 
 Replace `10.10.10.10` with your actual LHOST (Local Host) IP and `4444` with your desired LPORT (Local Port).
@@ -74,7 +74,7 @@ Replace `10.10.10.10` with your actual LHOST (Local Host) IP and `4444` with you
 - Metasploit Framework
 - Mono (for running the compiled C# executable)
 - Git (for cloning the repository)
-- A Kali Linux environment (or similar) is recommended, as the connection to the exam network is expected to be done with Kali Linux using OpenVPN【32†source】.
+
 
 ## Limitations
 
