@@ -142,6 +142,12 @@ After successful execution, you'll see output similar to this:
 6. Save as a macro-enabled document (.docm)
 7. Start the Metasploit handler with: `msfconsole -r handler.rc`
 
+
+<p align="center">
+  <img src="screenshot.png" alt="MacroPhantom Demo" width="700">
+</p>
+
+
 ## Security Considerations
 
 - This tool is for educational purposes and authorized testing only
